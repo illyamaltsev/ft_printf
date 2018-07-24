@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-
+#потрібні файли в папці stdlibft
 OBJLIBFTC = ft_lstnew.c ft_striter.c ft_strnequ.c ft_atoi.c ft_itoa.c\
 			ft_putchar.c ft_striteri.c ft_strcat.c ft_strjoin.c ft_strnstr.c\
 			ft_strnew.c ft_bzero.c ft_lstadd.c ft_memalloc.c ft_putchar_fd.c\
@@ -23,13 +23,18 @@ OBJLIBFTC = ft_lstnew.c ft_striter.c ft_strnequ.c ft_atoi.c ft_itoa.c\
 			ft_strncat.c ft_strtrim.c ft_isdigit.c ft_memmove.c ft_putstr_fd.c\
 			ft_strdup.c ft_strncmp.c ft_tolower.c ft_isprint.c ft_memset.c\
 			ft_strequ.c ft_strncpy.c ft_toupper.c ft_putnstr.c ft_itoa_base.c
+#потрібні файли в папці printffnc
 OBJPRINTFC = ft_printf.c ft_stdfuncs.c ft_corect.c ft_wchar_t_char.c ft_wchar_t_str.c\
 			ft_parsing.c ft_format_openers.c ft_corect_width_precision.c
+#потрібні файли в папці myfnc
 OBJMYC = ft_fill_array.c ft_rot_13.c ft_sqrt.c ft_arrnew.c ft_tenton.c ft_gobig.c\
 		 	ft_foreach.c
+#до кожного файлу в змінних OBJLIBFTC, OBJPRINTFC, OBJMYC дописуємо папку якій він належить. І записуємо це в змінну OBJC.
 OBJC = $(OBJLIBFTC:ft_%.c=stdlibft/ft_%.c) $(OBJPRINTFC:ft_%.c=printffnc/ft_%.c) $(OBJMYC:ft_%.c=myfnc/ft_%.c)
+#в змінну OBJO записуємо всі назви файлів тільки міняємо .с на .о
 OBJO = $(OBJLIBFTC:.c=.o) $(OBJPRINTFC:.c=.o) $(OBJMYC:.c=.o)
 NAME = libftprintf.a
+#флаги для зручності
 CFLAGS = -Wall -Werror -Wextra
 
 $(NAME):
@@ -40,7 +45,7 @@ $(NAME):
 all: $(NAME)
 
 clean:
-	rm -f *.o
+	rm -f $(OBJO)
 
 fclean: clean
 	rm -f $(NAME)
